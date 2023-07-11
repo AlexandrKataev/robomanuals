@@ -7,6 +7,7 @@ $theme-colors: map-merge(
   $theme-colors,
   (
     'primary': $primary,
+    'bg-primary': $primary,
   )
 );
 
@@ -15,6 +16,15 @@ $theme-colors: map-merge(
 .btn-primary,
 .btn-primary:hover {
   color: #ffffff;
+}
+
+.bg-primary {
+  background-color: $primary !important;
+}
+.btn.show,
+.btn.active,
+.btn:first-child:active {
+  border-color: #28ace000;
 }
 
 .btn-outline-primary {
@@ -43,14 +53,17 @@ a {
   display: none;
 }
 
-.icon-stroke:hover > svg > path,
-.icon-stroke:hover > svg > circle {
+.icon-stroke:hover {
+  &:hover > svg > path,
+  &:hover > svg > circle {
+    stroke: $primary;
+  }
+}
+
+.cart-icon:hover > div > svg > path {
   stroke: $primary;
 }
 
-.cart-icon:hover > svg > path {
-  stroke: $primary;
-}
-.cart-icon:hover > svg > path:last-child {
+.cart-icon:hover > div > svg > path:last-child {
   fill: $primary;
 }

@@ -1,8 +1,6 @@
 import { Button, Form, Modal } from 'react-bootstrap';
 
-import { userApi } from 'src/shared/api';
 import { FC } from 'react';
-import { useInput } from 'src/shared/hooks';
 
 interface IModal {
   onClickSignUp: () => void;
@@ -39,25 +37,24 @@ export const SignUp: FC<IModal> = ({
             className="mb-3"
             type="email"
             placeholder="Почта"
-            autoFocus
             value={email}
             onChange={onChangeEmail}
           />
 
           <Form.Control
+            className="mb-3"
             type="password"
             placeholder="Пароль"
-            autoFocus
             value={password}
             onChange={onChangePassword}
           />
         </Form>
+        <Modal.Footer className="d-flex justify-content-center">
+          <Button variant="primary" onClick={onClickSignUp}>
+            Готово
+          </Button>
+        </Modal.Footer>
       </Modal.Body>
-      <Modal.Footer className="d-flex justify-content-center">
-        <Button variant="primary" onClick={onClickSignUp}>
-          Готово
-        </Button>
-      </Modal.Footer>
     </>
   );
 };

@@ -36,16 +36,15 @@ export const SignIn: FC<IModal> = ({
             className="mb-3"
             type="password"
             placeholder="Пароль"
-            autoFocus
             value={password}
             onChange={onChangePassword}
           />
         </Form>
-        <div className="d-flex justify-content-center">
+        <Modal.Footer className="d-flex justify-content-center">
           <Button variant="primary" onClick={onClickSignIn}>
             Войти
           </Button>
-        </div>
+        </Modal.Footer>
       </Modal.Body>
     </>
   );

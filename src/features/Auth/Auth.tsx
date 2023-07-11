@@ -5,6 +5,7 @@ import { SignIn } from './SignIn';
 import { ButtonGroup, Form, Modal, ToggleButton } from 'react-bootstrap';
 import { userApi } from 'src/shared/api';
 import { useInput } from 'src/shared/hooks';
+import { LogoIcon } from '@icons';
 
 interface IModal {
   show: boolean;
@@ -36,45 +37,50 @@ export const Auth: FC<IModal> = ({ show, setShow }) => {
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <ButtonGroup className="m-3">
-        <ToggleButton
-          value={'true'}
-          type="radio"
-          variant="outline-primary"
-          name="radio"
-          checked={userHasAccount}
-          onClick={(e) => setUserHasAccount(true)}>
-          Войти в аккаунт
-        </ToggleButton>
-        <ToggleButton
-          value={'true'}
-          type="radio"
-          variant="outline-primary"
-          name="radio"
-          checked={!userHasAccount}
-          onClick={(e) => setUserHasAccount(false)}>
-          Создать аккаунт
-        </ToggleButton>
-      </ButtonGroup>
-      {userHasAccount ? (
-        <SignIn
-          onClickSignIn={onClickSignIn}
-          password={password}
-          email={email}
-          onChangePassword={onChangePassword}
-          onChangeEmail={onChangeEmail}
-        />
-      ) : (
-        <SignUp
-          onClickSignUp={onClickSignUp}
-          password={password}
-          email={email}
-          userName={userName}
-          onChangePassword={onChangePassword}
-          onChangeEmail={onChangeEmail}
-          onChangeUserName={onChangeUserName}
-        />
-      )}
+      <Modal.Header className="m-2" closeButton></Modal.Header>
+      <div className="d-flex flex-column align-items-center">
+        <LogoIcon width="150px" height="150px" />
+        <h2 className="mb-5">Добро пожаловать!</h2>
+        <ButtonGroup className="mt-1">
+          <ToggleButton
+            value={'true'}
+            type="radio"
+            variant="outline-primary"
+            name="radio"
+            checked={userHasAccount}
+            onClick={(e) => setUserHasAccount(true)}>
+            Войти в аккаунт
+          </ToggleButton>
+          <ToggleButton
+            value={'true'}
+            type="radio"
+            variant="outline-primary"
+            name="radio"
+            checked={!userHasAccount}
+            onClick={(e) => setUserHasAccount(false)}>
+            Создать аккаунт
+          </ToggleButton>
+        </ButtonGroup>
+        {userHasAccount ? (
+          <SignIn
+            onClickSignIn={onClickSignIn}
+            password={password}
+            email={email}
+            onChangePassword={onChangePassword}
+            onChangeEmail={onChangeEmail}
+          />
+        ) : (
+          <SignUp
+            onClickSignUp={onClickSignUp}
+            password={password}
+            email={email}
+            userName={userName}
+            onChangePassword={onChangePassword}
+            onChangeEmail={onChangeEmail}
+            onChangeUserName={onChangeUserName}
+          />
+        )}
+      </div>
     </Modal>
   );
 };

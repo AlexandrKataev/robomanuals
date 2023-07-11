@@ -1,4 +1,4 @@
-import { Button, Container, Dropdown, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Badge, Button, Container, Dropdown, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 
 import { CartIcon, UserIcon, LogoIcon } from '@icons';
 import { Link } from 'react-router-dom';
@@ -53,21 +53,20 @@ export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
               </Dropdown.Menu>
             </Dropdown>
           ) : (
-            <Nav.Link>
-              <Button
-                variant="white"
-                className="d-flex flex-column align-items-center me-3 icon-stroke"
-                onClick={handleShow}>
-                <UserIcon />
-                <span>Войти</span>
-              </Button>
+            <Nav.Link
+              className="d-flex flex-column align-items-center me-3 icon-stroke"
+              onClick={handleShow}>
+              <UserIcon />
+              <span>Войти</span>
             </Nav.Link>
           )}
           <Auth show={show} setShow={setShow} />
           <Nav.Link>
-            <Link to="/cart" className="d-flex flex-column align-items-center cart-icon">
+            <Link
+              to="/cart"
+              className="d-flex flex-column align-items-center cart-icon position-relative">
               <CartIcon />
-              Корзина
+              <span>Корзина</span>
             </Link>
           </Nav.Link>
         </Nav>
