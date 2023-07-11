@@ -18,7 +18,11 @@
 
     "baseUrl": ".",
     "paths": {
-      "@layouts": ["src/layouts"]
+      "@layouts": ["src/layouts"],
+      "@icons": ["src/shared/icons"],
+      "@assets": ["src/shared/assets"],
+      "@pages": ["src/pages"],
+      "@features": ["src/features"]
     }
   },
   "include": ["src"]

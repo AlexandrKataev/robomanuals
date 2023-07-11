@@ -1,0 +1,56 @@
+@import 'bootstrap';
+
+$primary: #28ace0; // set the $primary variable
+
+// merge with existing $theme-colors map
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    'primary': $primary,
+  )
+);
+
+@import 'bootstrap';
+
+.btn-primary,
+.btn-primary:hover {
+  color: #ffffff;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #28ace0;
+  --bs-btn-border-color: #28ace0;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #28ace0;
+  --bs-btn-hover-border-color: #28ace0;
+  --bs-btn-focus-shadow-rgb: 40, 172, 224;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #28ace0;
+  --bs-btn-active-border-color: #28ace0;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #28ace0;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #28ace0;
+  --bs-gradient: none;
+}
+
+a {
+  text-decoration: none;
+  color: #5d5d64;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.icon-stroke:hover > svg > path,
+.icon-stroke:hover > svg > circle {
+  stroke: $primary;
+}
+
+.cart-icon:hover > svg > path {
+  stroke: $primary;
+}
+.cart-icon:hover > svg > path:last-child {
+  fill: $primary;
+}

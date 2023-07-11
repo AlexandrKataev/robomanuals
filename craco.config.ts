@@ -9,6 +9,8 @@ module.exports = {
       '@features': resolvePath('./src/features'),
       '@layouts': resolvePath('./src/layouts'),
       '@pages': resolvePath('./src/pages'),
+      '@icons': resolvePath('./src/shared/icons'),
+      '@assets': resolvePath('./src/shared/assets'),
     },
   },
 };
