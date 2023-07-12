@@ -1,6 +1,6 @@
-import { AdminPage, CartPage, HomePage, ItemPage, UserPage } from '@pages';
+import { AdminPage, CartPage, HomePage, ProductPage, UserPage } from '@pages';
 import { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 interface IRoutingProps {
   isAdmin: boolean;
@@ -12,8 +12,9 @@ export const Routing: FC<IRoutingProps> = ({ isAdmin }) => {
       <Route path="/" element={<HomePage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/user" element={<UserPage />} />
+      <Route path="/product/:productId" element={<ProductPage />} />
       {isAdmin && <Route path="/admin" element={<AdminPage />} />}
-      <Route path="/item/:itemId" element={<ItemPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };

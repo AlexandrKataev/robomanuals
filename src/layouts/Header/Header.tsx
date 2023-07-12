@@ -65,7 +65,7 @@ export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
             <Link
               to="/cart"
               className="d-flex flex-column align-items-center cart-icon position-relative">
-              <CartIcon />
+              <CartIcon fontSize={2} />
               <span>Корзина</span>
             </Link>
           </Nav.Link>

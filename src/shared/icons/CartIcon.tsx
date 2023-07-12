@@ -29,7 +29,7 @@ export const CartIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
         />
       </svg>
       <div className={styles.badge}>
-        <Badge className="translate-middle badge rounded-pill bg-primary">1</Badge>
+        <Badge className="translate-middle badge rounded-pill bg-primary">{props.fontSize}</Badge>
       </div>
     </div>
   );
