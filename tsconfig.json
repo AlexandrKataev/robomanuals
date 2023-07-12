@@ -22,7 +22,8 @@
       "@icons": ["src/shared/icons"],
       "@assets": ["src/shared/assets"],
       "@pages": ["src/pages"],
-      "@features": ["src/features"]
+      "@features": ["src/features"],
+      "@entities": ["src/entities/index.ts"]
     }
   },
   "include": ["src"]
