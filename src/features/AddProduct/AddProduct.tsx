@@ -53,10 +53,10 @@ export const AddProduct = () => {
         required
       />
       <Form.Select className="mb-3" value={category} onChange={onChangeCategory}>
-        <option value={Categories.wedo1}>Lego WeDo</option>
-        <option value={Categories.wedo2}>Lego WeDo 2</option>
-        <option value={Categories.mindstorm}>Lego WeDo 3</option>
-        <option value={Categories.others}>Lego WeDo 3</option>
+        <option value={Categories.wedo1}>{Categories.wedo1}</option>
+        <option value={Categories.wedo2}>{Categories.wedo2}</option>
+        <option value={Categories.mindstorm}>{Categories.mindstorm}</option>
+        <option value={Categories.others}>{Categories.others}</option>
       </Form.Select>
 
       <ButtonGroup>

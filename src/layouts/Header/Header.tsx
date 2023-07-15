@@ -1,7 +1,7 @@
 import { Container, Dropdown, Nav, Navbar } from 'react-bootstrap';
 
 import { CartIcon, UserIcon, LogoIcon } from '@icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FC, useState } from 'react';
 import { Auth } from '@features';
 import { userService } from '@services';
@@ -16,6 +16,7 @@ interface IHeader {
 
 export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const count = useAppSelector(selectCartProductsCount);
 
@@ -23,6 +24,7 @@ export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
 
   const onClickLogOut = () => {
     userService.signOut();
+    navigate('/');
   };
 
   return (
@@ -69,7 +71,7 @@ export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
             <Link
               to="/cart"
               className="d-flex flex-column align-items-center cart-icon position-relative">
-              <CartIcon fontSize={count} />
+              <CartIcon count={count} />
               <span>Корзина</span>
             </Link>
           </Nav.Link>

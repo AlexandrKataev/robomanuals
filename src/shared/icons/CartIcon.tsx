@@ -3,13 +3,12 @@ import { Badge } from 'react-bootstrap';
 
 import styles from './Cart.module.scss';
 
-export const CartIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
+export const CartIcon = (props: { count: number }) => {
   return (
     <div className={styles.container}>
       <svg
         width="30px"
         height="30px"
-        {...props}
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">
@@ -28,9 +27,11 @@ export const CartIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
           fill="#5D5D64"
         />
       </svg>
-      <div className={styles.badge}>
-        <Badge className="translate-middle badge rounded-pill bg-primary">{props.fontSize}</Badge>
-      </div>
+      {props.count > 0 && (
+        <div className={styles.badge}>
+          <Badge className="translate-middle badge rounded-pill bg-primary">{props.count}</Badge>
+        </div>
+      )}
     </div>
   );
 };

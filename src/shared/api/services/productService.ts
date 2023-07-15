@@ -10,9 +10,9 @@ import {
 import { db } from '../config/firebase';
 
 export enum Categories {
-  wedo1 = 'Lego WeDo 1.0',
-  wedo2 = 'Lego WeDo 2.0',
-  mindstorm = 'Lego Mindstorms',
+  wedo1 = 'WeDo 1.0',
+  wedo2 = 'WeDo 2.0',
+  mindstorm = 'Mindstorms',
   others = 'Others',
 }
 
