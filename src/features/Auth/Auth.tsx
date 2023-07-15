@@ -2,8 +2,8 @@ import { FC, useState } from 'react';
 
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
-import { ButtonGroup, Form, Modal, ToggleButton } from 'react-bootstrap';
-import { userApi } from 'src/shared/api';
+import { ButtonGroup, Modal, ToggleButton } from 'react-bootstrap';
+import { userService } from '@services';
 import { useInput } from 'src/shared/hooks';
 import { LogoIcon } from '@icons';
 
@@ -21,7 +21,7 @@ export const Auth: FC<IModal> = ({ show, setShow }) => {
   const handleClose = () => setShow(false);
 
   const onClickSignUp = () => {
-    userApi.signUp(email, password, userName);
+    userService.signUp(email, password, userName);
     setShow(false);
     clearPassword();
     clearEmail();
@@ -29,7 +29,7 @@ export const Auth: FC<IModal> = ({ show, setShow }) => {
   };
 
   const onClickSignIn = () => {
-    userApi.signIn(email, password);
+    userService.signIn(email, password);
     setShow(false);
     clearPassword();
     clearEmail();

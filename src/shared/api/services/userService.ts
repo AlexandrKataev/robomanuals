@@ -8,9 +8,9 @@ import {
 
 import { doc, getDoc } from 'firebase/firestore';
 
-import { auth, db } from './config/firebase';
+import { auth, db } from '../config/firebase';
 
-export const userApi = {
+export const userService = {
   signUp: async (email: string, password: string, name: string) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password).catch((err) => console.log(err));

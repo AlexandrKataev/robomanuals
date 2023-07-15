@@ -1,5 +1,4 @@
 import { Container } from 'react-bootstrap';
-import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
   return (

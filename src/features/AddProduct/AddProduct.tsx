@@ -1,25 +1,23 @@
 import { useState } from 'react';
 import { Button, ButtonGroup, Form, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { productApi } from 'src/shared/api';
-import { useInput } from 'src/shared/hooks';
-
-type category = 'wedo1' | 'wedo2' | 'wedo3';
+import { Categories, productService } from '@services';
+import { useInput } from '@hooks';
 
 export const AddProduct = () => {
   const { value: titleValue, onChange: onTitleChange } = useInput();
   const { value: descriptionValue, onChange: onDescriptionChange } = useInput();
   const { value: priceValue, onChange: onPriceChange } = useInput();
-  const [category, setCategory] = useState('wedo1' as category);
+  const [category, setCategory] = useState(Categories.wedo1);
 
   const navigate = useNavigate();
 
   const onChangeCategory = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(event.target.value as category);
+    setCategory(event.target.value as Categories);
   };
 
   const onClickAddProduct = (e: React.FormEvent<HTMLButtonElement>) => {
-    productApi.addProduct({
+    productService.addProduct({
       title: titleValue,
       description: descriptionValue,
       price: +priceValue,
@@ -55,9 +53,10 @@ export const AddProduct = () => {
         required
       />
       <Form.Select className="mb-3" value={category} onChange={onChangeCategory}>
-        <option value="wedo1">Lego WeDo</option>
-        <option value="wedo2">Lego WeDo 2</option>
-        <option value="wedo3">Lego WeDo 3</option>
+        <option value={Categories.wedo1}>Lego WeDo</option>
+        <option value={Categories.wedo2}>Lego WeDo 2</option>
+        <option value={Categories.mindstorm}>Lego WeDo 3</option>
+        <option value={Categories.others}>Lego WeDo 3</option>
       </Form.Select>
 
       <ButtonGroup>

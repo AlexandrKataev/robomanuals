@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
-
-import { DocumentData } from 'firebase/firestore';
-import { productApi } from 'src/shared/api';
 import { Button, Card, Col } from 'react-bootstrap';
+
 import { CartIcon } from '@icons';
+import { IProduct, productService } from '@services';
 
 export const ProductCatalog = () => {
-  const [products, setProducts] = useState([] as DocumentData[]);
+  const [products, setProducts] = useState([] as IProduct[]);
 
   useEffect(() => {
-    productApi.getProducts().then((data) => {
-      const fetchedProducts = data.map((doc) => {
-        return doc.data();
-      });
-      setProducts(fetchedProducts);
+    productService.getProducts().then((data) => {
+      setProducts(data);
     });
   }, []);
+
   return (
     <>
       {products.map((el) => {

@@ -1,5 +1,5 @@
 import { ProductList } from '@entities';
-import { AddProduct, AdminPanel } from '@features';
+import { AdminPanel } from '@features';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 

@@ -23,7 +23,9 @@
       "@assets": ["src/shared/assets"],
       "@pages": ["src/pages"],
       "@features": ["src/features"],
-      "@entities": ["src/entities/index.ts"]
+      "@entities": ["src/entities/index.ts"],
+      "@services": ["src/shared/api/services"],
+      "@hooks": ["src/shared/hooks"]
     }
   },
   "include": ["src"]

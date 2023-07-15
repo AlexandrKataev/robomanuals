@@ -11,6 +11,8 @@ module.exports = {
       '@pages': resolvePath('./src/pages'),
       '@icons': resolvePath('./src/shared/icons'),
       '@assets': resolvePath('./src/shared/assets'),
+      '@services': resolvePath('./src/shared/api/services'),
+      '@hooks': resolvePath('./src/shared/hooks'),
     },
   },
 };

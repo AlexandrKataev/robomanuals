@@ -1,11 +1,11 @@
-import { Header } from '@layouts';
+import { useEffect, useState } from 'react';
 
 import './App.scss';
+import { Header } from '@layouts';
 import { Routing } from './routing/Routing';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from 'src/shared/api/config/firebase';
-import { useEffect, useState } from 'react';
-import { userApi } from 'src/shared/api';
+import { userService } from '@services';
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -14,7 +14,9 @@ const App = () => {
 
   useEffect(() => {
     if (auth.currentUser) {
-      userApi.checkAdminRigths(auth.currentUser.uid).then((value) => setIsAdmin(value || false));
+      userService
+        .checkAdminRigths(auth.currentUser.uid)
+        .then((value) => setIsAdmin(value || false));
     }
   }, [isAuth]);
 
@@ -33,6 +35,7 @@ const App = () => {
       // ...
     }
   });
+
   return (
     <div>
       <Header userName={userName} isAuth={isAuth} isAdmin={isAdmin} />

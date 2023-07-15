@@ -1,10 +1,10 @@
-import { Badge, Button, Container, Dropdown, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Container, Dropdown, Nav, Navbar } from 'react-bootstrap';
 
 import { CartIcon, UserIcon, LogoIcon } from '@icons';
 import { Link } from 'react-router-dom';
 import { FC, useState } from 'react';
 import { Auth } from '@features';
-import { userApi } from 'src/shared/api';
+import { userService } from '@services';
 
 interface IHeader {
   isAuth: boolean;
@@ -18,7 +18,7 @@ export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
   const handleShow = () => setShow(true);
 
   const onClickLogOut = () => {
-    userApi.signOut();
+    userService.signOut();
   };
 
   return (

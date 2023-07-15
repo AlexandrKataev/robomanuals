@@ -1,5 +1,4 @@
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import styles from './AdminPanel.module.scss';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export const AdminPanel = () => {

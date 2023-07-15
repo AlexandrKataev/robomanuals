@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { productApi } from 'src/shared/api';
+import { useState } from 'react';
 
 export const ProductPage = () => {
   const [products, setProducts] = useState([]);
