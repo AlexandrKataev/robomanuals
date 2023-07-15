@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Button, ButtonGroup, Form, Modal } from 'react-bootstrap';
+import { Button, ButtonGroup, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { Categories, productService } from '@services';
+
+import { Categories } from '@services';
 import { useInput } from '@hooks';
+import { useAddProduct } from '@hooks';
 
 export const AddProduct = () => {
   const { value: titleValue, onChange: onTitleChange } = useInput();
@@ -16,14 +18,12 @@ export const AddProduct = () => {
     setCategory(event.target.value as Categories);
   };
 
-  const onClickAddProduct = (e: React.FormEvent<HTMLButtonElement>) => {
-    productService.addProduct({
-      title: titleValue,
-      description: descriptionValue,
-      price: +priceValue,
-      category,
-    });
-  };
+  const createProduct = useAddProduct({
+    title: titleValue,
+    description: descriptionValue,
+    price: +priceValue,
+    category,
+  });
 
   return (
     <Form className="d-flex flex-column align-items-center">
@@ -63,7 +63,7 @@ export const AddProduct = () => {
         <Button variant="outline-primary" onClick={() => navigate('/admin')}>
           Отмена
         </Button>
-        <Button variant="primary" onClick={onClickAddProduct}>
+        <Button variant="primary" onClick={createProduct}>
           Добавить товар
         </Button>
       </ButtonGroup>

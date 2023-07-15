@@ -1,21 +1,11 @@
-import { useEffect, useState } from 'react';
-
-import { IProduct, productService } from '@services';
 import { Table } from 'react-bootstrap';
-import { TrashIcon } from '@icons';
+
+import { useGetProducts } from '@hooks';
+
+import { ProductRow } from './ProductRow';
 
 export const ProductList = () => {
-  const [products, setProducts] = useState([] as IProduct[]);
-
-  useEffect(() => {
-    productService.getProducts().then((data) => {
-      setProducts(data);
-    });
-  }, []);
-
-  const onClickDeleteProduct = (id: string) => {
-    productService.deleteProduct(id);
-  };
+  const { products, isFetching } = useGetProducts();
 
   return (
     <Table striped borderless hover>
@@ -28,18 +18,13 @@ export const ProductList = () => {
         </tr>
       </thead>
       <tbody>
-        {products.map((el) => {
-          return (
-            <tr>
-              <td>{el.title}</td>
-              <td>{el.price}</td>
-              <td>{el.id}</td>
-              <td className="icon-stroke" onClick={() => onClickDeleteProduct(el.id as string)}>
-                <TrashIcon />
-              </td>
-            </tr>
-          );
-        })}
+        {isFetching ? (
+          <h1>Загрузка</h1>
+        ) : (
+          products?.map((el) => {
+            return <ProductRow {...el} />;
+          })
+        )}
       </tbody>
     </Table>
   );

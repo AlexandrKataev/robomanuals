@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { FC, useState } from 'react';
 import { Auth } from '@features';
 import { userService } from '@services';
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectCartProductsCount } from 'src/app/store/cartSlice';
 
 interface IHeader {
   isAuth: boolean;
@@ -14,6 +16,8 @@ interface IHeader {
 
 export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
   const [show, setShow] = useState(false);
+
+  const count = useAppSelector(selectCartProductsCount);
 
   const handleShow = () => setShow(true);
 
@@ -65,7 +69,7 @@ export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
             <Link
               to="/cart"
               className="d-flex flex-column align-items-center cart-icon position-relative">
-              <CartIcon fontSize={2} />
+              <CartIcon fontSize={count} />
               <span>Корзина</span>
             </Link>
           </Nav.Link>

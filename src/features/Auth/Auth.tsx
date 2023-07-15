@@ -4,7 +4,7 @@ import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
 import { ButtonGroup, Modal, ToggleButton } from 'react-bootstrap';
 import { userService } from '@services';
-import { useInput } from 'src/shared/hooks';
+import { useInput } from '@hooks';
 import { LogoIcon } from '@icons';
 
 interface IModal {

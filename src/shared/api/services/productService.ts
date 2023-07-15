@@ -9,8 +9,6 @@ import {
 } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
-import { createApi, fakeBaseQuery, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
 export enum Categories {
   wedo1 = 'Lego WeDo 1.0',
   wedo2 = 'Lego WeDo 2.0',
@@ -27,28 +25,6 @@ export interface IProduct {
 }
 
 const productsRef = collection(db, 'products');
-
-const api = createApi({
-  baseQuery: fakeBaseQuery(),
-  tagTypes: ['Products'],
-  endpoints: (build) => ({
-    getProducts: build.query({
-      async queryFn() {
-        try {
-          const q = query(productsRef);
-          const querySnapshot = (await getDocs(q)) as QuerySnapshot<IProduct>;
-          const products = querySnapshot.docs.map((doc) => {
-            return { ...doc.data(), id: doc.id };
-          });
-          return { data: products };
-        } catch (error) {
-          return { error };
-        }
-      },
-      providesTags: ['Products'],
-    }),
-  }),
-});
 
 export const productService = {
   getProducts: async () => {
