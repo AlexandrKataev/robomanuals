@@ -33,7 +33,7 @@ export const Header: FC<IHeader> = ({ isAuth, isAdmin, userName }) => {
         <Navbar.Brand>
           <Link to="/" className="d-flex align-items-center">
             <LogoIcon />
-            <span className="ms-2">Robomanuals</span>
+            <span className="ms-2 d-none d-sm-block">Robomanuals</span>
           </Link>
         </Navbar.Brand>
 
