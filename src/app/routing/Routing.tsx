@@ -1,4 +1,3 @@
-import { AddProduct } from '@features';
 import { AdminPage, CartPage, HomePage, ProductPage, UserPage } from '@pages';
 import { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -14,11 +13,7 @@ export const Routing: FC<IRoutingProps> = ({ isAdmin }) => {
       <Route path="cart" element={<CartPage />} />
       <Route path="user" element={<UserPage />} />
       <Route path="product/:productId" element={<ProductPage />} />
-      {isAdmin && (
-        <Route path="admin" element={<AdminPage />}>
-          <Route path="addProduct" element={<AddProduct />} />
-        </Route>
-      )}
+      {isAdmin && <Route path="admin" element={<AdminPage />} />}
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

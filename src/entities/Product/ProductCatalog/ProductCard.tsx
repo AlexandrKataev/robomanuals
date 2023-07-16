@@ -1,14 +1,14 @@
-import { Button, Card, Col } from 'react-bootstrap';
+import { Badge, Button, Card, Col } from 'react-bootstrap';
 
 import { IProduct } from '@services';
-import { CartIcon, CartIcon2 } from '@icons';
+import { CartIcon2 } from '@icons';
 import { useAppDispatch } from 'src/app/store/store';
 import {
   addProductInCart,
   deleteProductFromCart,
   selectCartProducts,
 } from 'src/app/store/cartSlice';
-import { useState } from 'react';
+
 import { useAppSelector } from 'src/app/store/hooks';
 
 export const ProductCard = (props: IProduct) => {
@@ -30,12 +30,17 @@ export const ProductCard = (props: IProduct) => {
           src="https://i.pinimg.com/originals/93/43/76/9343764527e53a481b5be200bdb3cff8.jpg"
         />
         <Card.Body className="d-flex flex-column">
-          <Card.Title>{props.title}</Card.Title>
+          <div className="mb-2">
+            <Badge>{props.category}</Badge>
+          </div>
+
+          <Card.Title className="fs-3">{props.title}</Card.Title>
           <Card.Text>{props.description}</Card.Text>
+
           <div className="ms-auto mt-auto">
             <Card.Text className="fs-5">{props.price} р</Card.Text>
             <Button
-              className=""
+              className="d-flex"
               variant={inCart ? 'primary' : 'outline-primary'}
               onClick={onClickIncrement}>
               <CartIcon2 color={inCart ? '#ffffff' : '#28ace0'} />

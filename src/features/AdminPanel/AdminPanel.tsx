@@ -1,10 +1,21 @@
+import { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
+import { AddProductModal } from './AddProductModal';
 
 export const AdminPanel = () => {
+  const [showAddProductModal, setShowAddProductModal] = useState(false);
+  const handleShowAddProductModal = () => setShowAddProductModal(true);
+  const handleCloseAddProductModal = () => setShowAddProductModal(false);
+
   return (
-    <Link to="/admin/addProduct">
-      <Button>Добавить товар</Button>
-    </Link>
+    <div className="mb-3">
+      <Button onClick={handleShowAddProductModal}>Добавить товар</Button>
+      <AddProductModal
+        show={showAddProductModal}
+        setShow={setShowAddProductModal}
+        close={handleCloseAddProductModal}
+      />
+    </div>
   );
 };
