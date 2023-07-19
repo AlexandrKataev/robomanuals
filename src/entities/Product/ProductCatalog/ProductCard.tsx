@@ -23,24 +23,26 @@ export const ProductCard = (props: IProduct) => {
   };
 
   return (
-    <Col sm={6} md={4} lg={3} className="px-3 py-4">
-      <Card style={{ height: '100%' }}>
+    <Col sm={6} md={4} lg={3} className="px-2 py-4 ">
+      <Card style={{ height: '100%', border: '0px' }} className="shadow-sm p-2">
         <Card.Img
           variant="top"
-          src="https://i.pinimg.com/originals/93/43/76/9343764527e53a481b5be200bdb3cff8.jpg"
+          src="https://static.rapidonline.com/catalogueimages/product/70/65/s70-6536p04wc.jpg"
         />
         <Card.Body className="d-flex flex-column">
           <div className="mb-2">
-            <Badge>{props.category}</Badge>
+            <Badge style={{ opacity: '40%' }} bg="primary">
+              {props.category}
+            </Badge>
           </div>
 
-          <Card.Title className="fs-3">{props.title}</Card.Title>
+          <Card.Title className="fs-4">{props.title}</Card.Title>
           <Card.Text>{props.description}</Card.Text>
 
-          <div className="ms-auto mt-auto">
-            <Card.Text className="fs-5">{props.price} р</Card.Text>
+          <div className="mt-auto d-flex  align-items-center ">
+            <span className="fs-5 align-middle fw-bold  ms-auto me-3">{props.price} ₽</span>
             <Button
-              className="d-flex"
+              className="d-flex "
               variant={inCart ? 'primary' : 'outline-primary'}
               onClick={onClickIncrement}>
               <CartIcon2 color={inCart ? '#ffffff' : '#28ace0'} />

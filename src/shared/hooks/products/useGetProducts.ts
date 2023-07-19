@@ -1,8 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { productService } from '@services';
+import { Categories, productService } from '@services';
 
-export const useGetProducts = () => {
-  const { data: products, isFetching } = useQuery(['products'], () => productService.getProducts());
+export const useGetProducts = (category: Categories | 'all') => {
+  const { data: products, isFetching } = useQuery(['products', category], () =>
+    productService.getProducts(category),
+  );
+
   return { products, isFetching };
 };

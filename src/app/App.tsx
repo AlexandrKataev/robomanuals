@@ -37,7 +37,7 @@ const App = () => {
   });
 
   return (
-    <div>
+    <div className="bg-light">
       <Header userName={userName} isAuth={isAuth} isAdmin={isAdmin} />
       <Routing isAdmin={isAdmin} />
     </div>
